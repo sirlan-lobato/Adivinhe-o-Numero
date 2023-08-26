@@ -1,27 +1,29 @@
-let msgBoaVindas = document.getElementById("mensagemBoaVinda");
-let inputNumero = document.getElementById("numeroAleatorio");
 let botao = document.getElementById("botao");
-let numeroAleatorio = parseInt(Math.random() * 10);
-let res = document.getElementById("mensagem");
-let tentativas = 10;
+let msg = document.getElementById("mensagem");
+let numeroSecreto = parseInt(Math.random() * 15 + 1);
+let chute = '';
+let tentativas = 1;
 
 botao.addEventListener('click', ()=>{
-
-    for(let i = 1; i < tentativas; i-- ){
-         if(inputNumero.value == numeroAleatorio){
-        res.innerHTML = `Parabéns vc Acertou o numero era ${numeroAleatorio}`; 
-    }else{
-        if(inputNumero.value > numeroAleatorio){
-            res.innerHTML = `O numero secreto é menor`
+    while(chute != numeroSecreto){
+        chute = parseInt(prompt("Insira um número"));
+        if(chute == numeroSecreto){
+                msg.style.display = "block";
+                let palavraTentativa = tentativas > 1 ? 'tentativas' : 'tentativa';
+                msg.innerHTML = `Parabéns vc acertou com ${tentativas} ${palavraTentativa} o numero era ${numeroSecreto}`;
+                break;
         }else{
-            res.innerHTML = `O numero secreto é maior`
+            if(chute > numeroSecreto){
+                alert("O numero secreto é menor");
+                // alert(`cONTANDO ${tentativas}`)
+            }
+            else{
+                alert("O numero é maior");
+                // alert(`cONTANDO ${tentativas}`)
+            }
         }
-    } 
+      tentativas++   
     }
 
-    alert(`Opa vc ja tentou ${tentativas} tentativas`)
-
-      
-});
-
-console.log(numeroAleatorio)
+})
+console.log(numeroSecreto);
