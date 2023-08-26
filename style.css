@@ -18,3 +18,7 @@ body{
     padding: 1rem;
 }
 
+#mensagem{
+    display: none;
+}
+
